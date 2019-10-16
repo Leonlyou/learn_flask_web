@@ -1,0 +1,141 @@
+2019-10-15 21:55:36,412 ERROR: Exception on /search [GET] [in d:\python3.6\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\python3.6\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "d:\python3.6\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "F:\python\flask_web 项目实战\app\main\routes.py", line 146, in search
+    current_app.config['POSTS_PER_PAGE'])
+  File "F:\python\flask_web 项目实战\app\models.py", line 15, in search
+    ids, total = query_index(cls.__tablename__, expression, page, per_page)
+  File "F:\python\flask_web 项目实战\app\search.py", line 29, in query_index
+    'from': (page - 1) * per_page, 'size': per_page})
+  File "d:\python3.6\lib\site-packages\elasticsearch\client\utils.py", line 76, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "d:\python3.6\lib\site-packages\elasticsearch\client\__init__.py", line 636, in search
+    doc_type, '_search'), params=params, body=body)
+  File "d:\python3.6\lib\site-packages\elasticsearch\transport.py", line 314, in perform_request
+    status, headers_response, data = connection.perform_request(method, url, params, body, headers=headers, ignore=ignore, timeout=timeout)
+  File "d:\python3.6\lib\site-packages\elasticsearch\connection\http_urllib3.py", line 163, in perform_request
+    self._raise_error(response.status, raw_data)
+  File "d:\python3.6\lib\site-packages\elasticsearch\connection\base.py", line 125, in _raise_error
+    raise HTTP_EXCEPTIONS.get(status_code, TransportError)(status_code, error_message, additional_info)
+elasticsearch.exceptions.NotFoundError: TransportError(404, 'index_not_found_exception', 'no such index [post]')
+2019-10-15 22:30:50,748 INFO: -----log startup-----> [in F:\python\flask_web 项目实战\app\__init__.py:78]
+2019-10-15 22:31:32,590 ERROR: Exception on /search [GET] [in d:\python3.6\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "d:\python3.6\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "d:\python3.6\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "d:\python3.6\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\python3.6\lib\site-packages\elasticsearch\connection\http_urllib3.py", line 149, in perform_request
+    response = self.pool.urlopen(method, url, body, retries=False, headers=request_headers, **kw)
+  File "d:\python3.6\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "d:\python3.6\lib\site-packages\urllib3\util\retry.py", line 333, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "d:\python3.6\lib\site-packages\urllib3\packages\six.py", line 686, in reraise
+    raise value
+  File "d:\python3.6\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "d:\python3.6\lib\site-packages\urllib3\connectionpool.py", line 357, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "d:\python3.6\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "d:\python3.6\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "d:\python3.6\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "d:\python3.6\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "d:\python3.6\lib\http\client.py", line 964, in send
+    self.connect()
+  File "d:\python3.6\lib\site-packages\urllib3\connection.py", line 166, in connect
+    conn = self._new_conn()
+  File "d:\python3.6\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x00000195DF34C908>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\python3.6\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "d:\python3.6\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "F:\python\flask_web 项目实战\app\main\routes.py", line 136, in search
+    current_app.config['POSTS_PER_PAGE'])
+  File "F:\python\flask_web 项目实战\app\models.py", line 15, in search
+    ids, total = query_index(cls.__tablename__, expression, page, per_page)
+  File "F:\python\flask_web 项目实战\app\search.py", line 29, in query_index
+    'from': (page - 1) * per_page, 'size': per_page})
+  File "d:\python3.6\lib\site-packages\elasticsearch\client\utils.py", line 76, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "d:\python3.6\lib\site-packages\elasticsearch\client\__init__.py", line 636, in search
+    doc_type, '_search'), params=params, body=body)
+  File "d:\python3.6\lib\site-packages\elasticsearch\transport.py", line 314, in perform_request
+    status, headers_response, data = connection.perform_request(method, url, params, body, headers=headers, ignore=ignore, timeout=timeout)
+  File "d:\python3.6\lib\site-packages\elasticsearch\connection\http_urllib3.py", line 158, in perform_request
+    raise ConnectionError('N/A', str(e), e)
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x00000195DF34C908>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x00000195DF34C908>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。)
+2019-10-15 22:35:01,571 INFO: -----log startup-----> [in F:\python\flask_web 项目实战\app\__init__.py:78]
+2019-10-15 22:35:11,973 ERROR: Exception on /search [GET] [in d:\python3.6\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\python3.6\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "d:\python3.6\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "F:\python\flask_web 项目实战\app\main\routes.py", line 136, in search
+    current_app.config['POSTS_PER_PAGE'])
+  File "F:\python\flask_web 项目实战\app\models.py", line 15, in search
+    ids, total = query_index(cls.__tablename__, expression, page, per_page)
+  File "F:\python\flask_web 项目实战\app\search.py", line 29, in query_index
+    'from': (page - 1) * per_page, 'size': per_page})
+  File "d:\python3.6\lib\site-packages\elasticsearch\client\utils.py", line 76, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "d:\python3.6\lib\site-packages\elasticsearch\client\__init__.py", line 636, in search
+    doc_type, '_search'), params=params, body=body)
+  File "d:\python3.6\lib\site-packages\elasticsearch\transport.py", line 314, in perform_request
+    status, headers_response, data = connection.perform_request(method, url, params, body, headers=headers, ignore=ignore, timeout=timeout)
+  File "d:\python3.6\lib\site-packages\elasticsearch\connection\http_urllib3.py", line 163, in perform_request
+    self._raise_error(response.status, raw_data)
+  File "d:\python3.6\lib\site-packages\elasticsearch\connection\base.py", line 125, in _raise_error
+    raise HTTP_EXCEPTIONS.get(status_code, TransportError)(status_code, error_message, additional_info)
+elasticsearch.exceptions.NotFoundError: TransportError(404, 'index_not_found_exception', 'no such index [post]')

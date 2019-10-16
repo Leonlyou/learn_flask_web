@@ -1,0 +1,110 @@
+2019-10-15 21:14:37,094 ERROR: Exception on / [GET] [in d:\python3.6\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "d:\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 1249, in _execute_context
+    cursor, statement, parameters, context
+  File "d:\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 552, in do_execute
+    cursor.execute(statement, parameters)
+  File "d:\python3.6\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "d:\python3.6\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "d:\python3.6\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "d:\python3.6\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "d:\python3.6\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "d:\python3.6\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "d:\python3.6\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "d:\python3.6\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'luo.user' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\python3.6\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 1947, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "d:\python3.6\lib\site-packages\flask\app.py", line 2241, in preprocess_request
+    rv = func()
+  File "F:\python\flask_web 项目实战\app\main\routes.py", line 18, in before_request
+    if current_user.is_authenticated:
+  File "d:\python3.6\lib\site-packages\werkzeug\local.py", line 348, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "d:\python3.6\lib\site-packages\werkzeug\local.py", line 307, in _get_current_object
+    return self.__local()
+  File "d:\python3.6\lib\site-packages\flask_login\utils.py", line 26, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+  File "d:\python3.6\lib\site-packages\flask_login\utils.py", line 335, in _get_user
+    current_app.login_manager._load_user()
+  File "d:\python3.6\lib\site-packages\flask_login\login_manager.py", line 359, in _load_user
+    return self.reload_user()
+  File "d:\python3.6\lib\site-packages\flask_login\login_manager.py", line 321, in reload_user
+    user = self.user_callback(user_id)
+  File "F:\python\flask_web 项目实战\app\models.py", line 126, in load_user
+    return User.query.get(int(id))
+  File "d:\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 959, in get
+    return self._get_impl(ident, loading.load_on_pk_identity)
+  File "d:\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 1069, in _get_impl
+    return db_load_fn(self, primary_key_identity)
+  File "d:\python3.6\lib\site-packages\sqlalchemy\orm\loading.py", line 282, in load_on_pk_identity
+    return q.one()
+  File "d:\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3292, in one
+    ret = self.one_or_none()
+  File "d:\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3261, in one_or_none
+    ret = list(self)
+  File "d:\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3334, in __iter__
+    return self._execute_and_instances(context)
+  File "d:\python3.6\lib\site-packages\sqlalchemy\orm\query.py", line 3359, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "d:\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "d:\python3.6\lib\site-packages\sqlalchemy\sql\elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "d:\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "d:\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 1253, in _execute_context
+    e, statement, parameters, cursor, context
+  File "d:\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 1473, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "d:\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "d:\python3.6\lib\site-packages\sqlalchemy\util\compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "d:\python3.6\lib\site-packages\sqlalchemy\engine\base.py", line 1249, in _execute_context
+    cursor, statement, parameters, context
+  File "d:\python3.6\lib\site-packages\sqlalchemy\engine\default.py", line 552, in do_execute
+    cursor.execute(statement, parameters)
+  File "d:\python3.6\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "d:\python3.6\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "d:\python3.6\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "d:\python3.6\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "d:\python3.6\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "d:\python3.6\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "d:\python3.6\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "d:\python3.6\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.ProgrammingError: (pymysql.err.ProgrammingError) (1146, "Table 'luo.user' doesn't exist")
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen 
+FROM user 
+WHERE user.id = %(param_1)s]
+[parameters: {'param_1': 9}]
+(Background on this error at: http://sqlalche.me/e/f405)
+2019-10-15 21:19:05,952 INFO: -----log startup-----> [in F:\python\flask_web 项目实战\app\__init__.py:78]
